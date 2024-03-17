@@ -22,10 +22,13 @@ def main():
     G = nx.MultiDiGraph()
 
     municipios = [
-        ("armenia",5.120730670623553, -75.52729707759781), ("bogota",4.718053568114313, -74.06658286745144), ("cali",3.5789827143414126, -76.58929061461298), ("cartagena",10.496444164668606, -75.45901276372226),("cucuta",7.9047253501007, -72.5696086268443),
-        ("ibague",4.549441498536578, -75.29567685960617), ("manizales",5.140580712416249, -75.42751278908962), ("medellin",6.342991090657202, -75.56484188230154), ("monteria",8.798617353870156, -75.83950008275438), ("neiva",2.993669310618653, -75.28749978065257),
-        ("pasto",1.2070625462429003, -77.28623500589828), ("pereira",4.807347684510505, -75.69173445872742), ("popayan",2.445550522724912, -76.61177957088165), ("quibdo",5.695461820855649, -76.65121550139872), ("sincelejo",9.305349792815962, -75.39328315093385),
-        ("tunja",5.545101781863523, -73.3576152272728), ("villavo",4.14975368862445, -73.62931702804678), ("arauca",7.0903,-70.7617), ("mocoa",1.1478352782174623, -76.64783640817116), ("yopal",5.349069797742737, -72.40121322204848)
+        ("armenia",5.120730670623553, -75.52729707759781), ("bogota",4.718053568114313, -74.06658286745144), ("cali",3.5789827143414126, -76.58929061461298), 
+        ("cartagena",10.496444164668606, -75.45901276372226),("cucuta",7.9047253501007, -72.5696086268443),("ibague",4.549441498536578, -75.29567685960617), 
+        ("manizales",5.140580712416249, -75.42751278908962), ("medellin",6.342991090657202, -75.56484188230154), ("monteria",8.798617353870156, -75.83950008275438), 
+        ("neiva",2.993669310618653, -75.28749978065257),("pasto",1.2070625462429003, -77.28623500589828), ("pereira",4.807347684510505, -75.69173445872742), 
+        ("popayan",2.445550522724912, -76.61177957088165), ("quibdo",5.695461820855649, -76.65121550139872), ("sincelejo",9.305349792815962, -75.39328315093385),
+        ("tunja",5.545101781863523, -73.3576152272728), ("villavo",4.14975368862445, -73.62931702804678), ("arauca",7.0903,-70.7617), ("mocoa",1.1478352782174623, -76.64783640817116), 
+        ("yopal",5.349069797742737, -72.40121322204848)
     ]
 
     conexiones = [
@@ -83,7 +86,7 @@ def main():
             folium.PolyLine([origen_coords, destino_coords], color="red", weight=2, opacity=1).add_to(mapa)
 
         # Guardar el mapa como un archivo HTML
-        mapa.save("mapa_ciudades.html")
+        mapa.save("mapa_municipios.html")
 
         # Mostrar el mapa
         mapa
@@ -97,13 +100,13 @@ def main():
     for municipio_origen, data in shortest_paths_dijkstra.items():
         print(f"Camino más corto desde {municipio_origen} hasta {municipio_destino}:")
         print(data["path"])
-        print(f"Distancia: {data['distance']}")
+        print(f"Distancia: {data['distance']} km")
 
     print("\nResultados usando A*:")
     for municipio_origen, data in shortest_paths_astar.items():
         print(f"Camino más corto desde {municipio_origen} hasta {municipio_destino}:")
         print(data["path"])
-        print(f"Distancia: {data['distance']}")
+        print(f"Distancia: {data['distance']} km")
 
     get_lat_lng(municipios, conexiones)
 
